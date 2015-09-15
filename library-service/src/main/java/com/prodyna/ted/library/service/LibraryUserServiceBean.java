@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.prodyna.ted.library.service;
 
 import java.util.Date;
@@ -25,74 +22,72 @@ import com.prodyna.ted.library.entity.LibraryUser;
 @Stateless
 public class LibraryUserServiceBean implements LibraryUserService {
 	
-	public static final String LIBRARY_USERS_COLLECTION = "users";
-	
 	@Inject
 	private MongoDatabase libraryDB;
 
 	@Override
 	public void addUser(LibraryUser user) {
-		MongoCollection<Document> users = libraryDB.getCollection(LIBRARY_USERS_COLLECTION);
+		// TODO your code comes here
 		
 	}
 
 	@Override
 	public void removeUser(UUID uuid) {
-		// TODO Auto-generated method stub
+		// TODO your code comes here
 
 	}
 
 	@Override
 	public LibraryUser findUserByUUID(UUID uuid) {
-		// TODO Auto-generated method stub
+		// TODO your code comes here
 		return null;
 	}
 
 	@Override
 	public List<LibraryUser> findUsersByUsername(String username) {
-		// TODO Auto-generated method stub
+		// TODO your code comes here
 		return null;
 	}
 
 	@Override
 	public List<LibraryUser> findUsersByFirstName(String firstname) {
-		// TODO Auto-generated method stub
+		// TODO your code comes here
 		return null;
 	}
 
 	@Override
 	public List<LibraryUser> findUsersByLastName(String lastname) {
-		// TODO Auto-generated method stub
+		// TODO your code comes here
 		return null;
 	}
 
 	@Override
 	public List<LibraryUser> findUsersByDateOfBirth(Date dateOfBirth) {
-		// TODO Auto-generated method stub
+		// TODO your code comes here
 		return null;
 	}
 
 	@Override
 	public LibraryUser findUserByBookLent(Book book) {
-		// TODO Auto-generated method stub
+		// TODO your code comes here
 		return null;
 	}
 
 	@Override
 	public List<LibraryUser> findUsersByBooksLentInCategory(Category category) {
-		// TODO Auto-generated method stub
+		// TODO your code comes here
 		return null;
 	}
 
 	@Override
 	public void lendBook(Book book, LibraryUser user) {
-		// TODO Auto-generated method stub
+		// TODO your code comes here
 		
 	}
 
 	@Override
 	public List<Book> findBooksLentByUser(LibraryUser user) {
-		// TODO Auto-generated method stub
+		// TODO your code comes here
 		return null;
 	}
 
