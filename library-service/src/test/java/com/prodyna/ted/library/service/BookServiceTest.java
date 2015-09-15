@@ -42,6 +42,7 @@ public class BookServiceTest {
 	public final void testRemoveAll1() {
 		bookService.removeAll();
 		List<Book> allBooks = bookService.findAll();
+		Assert.assertNotNull(allBooks);
 		Assert.assertTrue(allBooks.isEmpty());
 	}
 
@@ -148,6 +149,7 @@ public class BookServiceTest {
 	public final void testRemoveAll2() {
 		bookService.removeAll();
 		List<Book> allBooks = bookService.findAll();
+		Assert.assertNotNull(allBooks);
 		Assert.assertTrue(allBooks.isEmpty());
 	}
 
