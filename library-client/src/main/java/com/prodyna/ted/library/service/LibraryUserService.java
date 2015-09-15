@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.prodyna.ted.library.service;
 
 import java.util.Date;
