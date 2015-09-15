@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.prodyna.ted.library.entity;
 
 import java.io.Serializable;
