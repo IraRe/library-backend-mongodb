@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.prodyna.ted.library.producer;
 
 import javax.enterprise.context.ApplicationScoped;
