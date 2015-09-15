@@ -1,4 +1,0 @@
-com\prodyna\ted\library\service\BookServiceBean.class
-com\prodyna\ted\library\service\LibraryUserServiceBean.class
-com\prodyna\ted\library\producer\MongoClientProducer.class
-com\prodyna\ted\library\producer\MongoDatabaseProducer.class
