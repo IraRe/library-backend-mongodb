@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.prodyna.ted.library.service;
 
 import static com.mongodb.client.model.Filters.eq;
@@ -27,26 +24,24 @@ import com.prodyna.ted.library.entity.Category;
 @Stateless
 public class BookServiceBean implements BookService {
 	
-	public static final String BOOKS_COLLECTION = "books";
-	
 	@Inject
 	private MongoDatabase libraryDB;
 	
 	@Override
 	public void addBook(Book book) {
-		// TODO here comes your code
+		// TODO your code comes here
 	}
 
 	@Override
 	public void removeBook(String isbn) {
-		// TODO here comes your code
+		// TODO your code comes here
 	}
 
 	@Override
 	public Book findBookByISBN(String isbn) {
 		Book book = null;
 		
-		// TODO here comes your code
+		// TODO your code comes here
 		
 		return book;
 	}
@@ -54,7 +49,7 @@ public class BookServiceBean implements BookService {
 	@Override
 	public List<Book> findBooksByTitle(String title) {
 		
-		// TODO here comes your code
+		// TODO your code comes here
 		
 		return null;
 	}
@@ -62,7 +57,7 @@ public class BookServiceBean implements BookService {
 	@Override
 	public List<Book> findBooksByAuthor(String author) {
 		
-		// TODO here comes your code
+		// TODO your code comes here
 		
 		return null;
 	}
@@ -70,19 +65,19 @@ public class BookServiceBean implements BookService {
 	@Override
 	public List<Book> findBooksByCategory(Category category) {
 		
-		// TODO here comes your code
+		// TODO your code comes here
 		
 		return null;
 	}
 
 	@Override
 	public void removeAll() {
-		// TODO here comes your code
+		// TODO your code comes here
 	}
 
 	@Override
 	public List<Book> findAll() {
-		// TODO here comes your code
+		// TODO your code comes here
 		return null;
 	}
 
