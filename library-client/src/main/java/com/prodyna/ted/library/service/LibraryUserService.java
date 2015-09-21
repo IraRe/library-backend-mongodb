@@ -20,6 +20,10 @@ public interface LibraryUserService {
 	
 	public void lendBook(Book book, LibraryUser user);
 	
+	public void removeAll();
+	
+	public List<LibraryUser> findAll();
+	
 	public LibraryUser findUserByUUID(UUID uuid);
 	
 	public List<LibraryUser> findUsersByUsername(String username);

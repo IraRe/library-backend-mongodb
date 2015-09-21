@@ -90,5 +90,15 @@ public class LibraryUserServiceBean implements LibraryUserService {
 		// TODO your code comes here
 		return null;
 	}
+	
+	@Override
+	public void removeAll() {
+		// TODO your code comes here
+	}
+
+	@Override
+	public List<LibraryUser> findAll() {
+		// TODO your code comes here
+	}
 
 }
