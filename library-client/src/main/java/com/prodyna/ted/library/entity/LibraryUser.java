@@ -76,6 +76,10 @@ public class LibraryUser implements Serializable {
 		return libraryUserID;
 	}
 
+	public void setLibraryUserID(UUID libraryUserID) {
+		this.libraryUserID = libraryUserID;
+	}
+
 	public List<Book> getLentBooks() {
 		return lentBooks;
 	}

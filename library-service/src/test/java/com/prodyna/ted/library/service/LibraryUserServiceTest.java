@@ -162,7 +162,6 @@ public class LibraryUserServiceTest {
 		Assert.assertNotNull(markus);
 		Assert.assertEquals("Fröhlich", markus.getLastName());
 		Assert.assertEquals("0049-xxx-yyyyy", markus.getTelephoneNumber());
-		Assert.assertEquals("teddybär", markus.getUsername());
 	}
 
 	@Test
@@ -205,15 +204,19 @@ public class LibraryUserServiceTest {
 	@Test
 	@InSequence(14)
 	public final void testLendBook() {
-		Book book = bookService.findBookByISBN("978-3791530123");
+		Book book = new Book("Emil und die Detektive", "978-3791530123");
+		book.getAuthors().add("Erich Kästner");
+		bookService.addBook(book);
 		LibraryUser stefan = libraryUserService.findUsersByLastName("Schubert").get(0);
 		libraryUserService.lendBook(book, stefan);
+		System.out.println(stefan);
 	}
 
 	@Test
 	@InSequence(15)
 	public final void testFindBooksLentByUser() {
 		LibraryUser stefan = libraryUserService.findUsersByLastName("Schubert").get(0);
+		System.out.println(stefan);
 		List<Book> booksLentByStefan = libraryUserService.findBooksLentByUser(stefan);
 		Assert.assertNotNull(booksLentByStefan);
 		Assert.assertFalse(booksLentByStefan.isEmpty());
