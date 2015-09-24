@@ -10,12 +10,15 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import org.bson.Document;
+import org.jongo.Jongo;
+import org.jongo.MongoCollection;
+import org.jongo.MongoCursor;
 
 import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.prodyna.ted.library.entity.Book;
 import com.prodyna.ted.library.entity.Category;
+import com.prodyna.ted.library.entity.LibraryUser;
 
 /**
  * @author Iryna Feuerstein (PRODYNA AG)
@@ -24,61 +27,64 @@ import com.prodyna.ted.library.entity.Category;
 @Stateless
 public class BookServiceBean implements BookService {
 	
+	private static final String BOOKS = "books";
+	
 	@Inject
-	private MongoDatabase libraryDB;
+	private Jongo jongo;
+	
+	private MongoCollection getCollection() {
+		return jongo.getCollection(BOOKS);
+	}
+	
+	private List<Book> getAsList(MongoCursor<Book> mongoCursor) {
+		List<Book> result = new ArrayList<Book>();
+		
+		for(Book book : mongoCursor) {
+			result.add(book);
+		}
+		
+		return result;
+	}
+
 	
 	@Override
 	public void addBook(Book book) {
-		// TODO your code comes here
+		getCollection().insert(book);
 	}
 
 	@Override
 	public void removeBook(String isbn) {
-		// TODO your code comes here
+		getCollection().remove("{isbn : '" + isbn + "'}");
 	}
 
 	@Override
 	public Book findBookByISBN(String isbn) {
-		Book book = null;
-		
-		// TODO your code comes here
-		
-		return book;
+		return getCollection().findOne("{isbn : '" + isbn + "'}").as(Book.class);
 	}
 
 	@Override
 	public List<Book> findBooksByTitle(String title) {
-		
-		// TODO your code comes here
-		
-		return null;
+		return getAsList(getCollection().find("{title : '" + title + "'}").as(Book.class));
 	}
 
 	@Override
 	public List<Book> findBooksByAuthor(String author) {
-		
-		// TODO your code comes here
-		
-		return null;
+		return getAsList(getCollection().find("{authors : '" + author + "'}").as(Book.class));
 	}
 
 	@Override
 	public List<Book> findBooksByCategory(Category category) {
-		
-		// TODO your code comes here
-		
-		return null;
+		return getAsList(getCollection().find("{categories : #}", category).as(Book.class));
 	}
 
 	@Override
 	public void removeAll() {
-		// TODO your code comes here
+		getCollection().remove();
 	}
 
 	@Override
 	public List<Book> findAll() {
-		// TODO your code comes here
-		return null;
+		return getAsList(getCollection().find().as(Book.class));
 	}
 
 }

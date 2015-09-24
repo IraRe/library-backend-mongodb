@@ -22,6 +22,10 @@ public class LibraryUser implements Serializable {
 	private String telephoneNumber;
 	private List<Book> lentBooks;
 	
+	public LibraryUser() {
+		
+	}
+	
 	public LibraryUser(String firstName, String secondName) {
 		this.firstName = firstName;
 		this.lastName = secondName;

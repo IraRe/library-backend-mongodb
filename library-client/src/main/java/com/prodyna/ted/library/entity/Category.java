@@ -11,6 +11,10 @@ public class Category implements Serializable {
 	private static final long serialVersionUID = 8420532296273042970L;
 	
 	private String name;
+	
+	public Category() {
+		
+	}
 
 	public Category(String name) {
 		super();

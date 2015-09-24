@@ -18,6 +18,10 @@ public class Book implements Serializable {
 	private String isbn;
 	private List<Category> categories;
 	
+	public Book() {
+		
+	}
+	
 	public Book(String title, String isbn) {
 		this.title = title;
 		this.isbn = isbn;
