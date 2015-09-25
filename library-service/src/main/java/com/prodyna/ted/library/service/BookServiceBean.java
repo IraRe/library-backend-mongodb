@@ -1,5 +1,6 @@
 package com.prodyna.ted.library.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,6 +9,7 @@ import javax.inject.Inject;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Label;
 import org.neo4j.graphdb.Node;
+import org.neo4j.graphdb.ResourceIterator;
 import org.neo4j.graphdb.Transaction;
 
 import com.prodyna.ted.library.entity.Book;
@@ -21,6 +23,13 @@ import com.prodyna.ted.library.relationship.LibraryRelationshipType;
 @Stateless
 public class BookServiceBean implements BookService {
 
+    private static final String BOOK = "BOOK";
+    private static final Label BOOK_LABEL = new Label() {
+        @Override
+        public String name() {
+            return BOOK;
+        }
+    };
     @Inject
     private GraphDatabaseService databaseService;
 
@@ -38,12 +47,8 @@ public class BookServiceBean implements BookService {
     public Node bookToNode(Book book) {
         // Book
         Node bookNode = databaseService.createNode();
-        bookNode.addLabel(new Label() {
-            @Override
-            public String name() {
-                return book.getTitle();
-            }
-        });
+
+        bookNode.addLabel(BOOK_LABEL);
         bookNode.setProperty("isbn", book.getIsbn());
         bookNode.setProperty("sub", book.getSubtitle());
 
@@ -77,7 +82,7 @@ public class BookServiceBean implements BookService {
     @Override
     public void removeBook(String isbn) {
 
-        Transaction transaction = databaseService.beginTx();
+        // Transaction transaction = databaseService.beginTx();
         // databaseService.findNode(label, key, value)
     }
 
@@ -114,12 +119,35 @@ public class BookServiceBean implements BookService {
 
     @Override
     public void removeAll() {
-        // TODO your code comes here
+        try (Transaction tx = databaseService.beginTx()) {
+            ResourceIterator<Node> nodes = databaseService.findNodes(BOOK_LABEL);
+            while (nodes.hasNext()) {
+                Node node = (Node) nodes.next();
+                node.delete();
+            }
+            tx.success();
+        }
     }
 
     @Override
     public List<Book> findAll() {
-        return null;
+        List<Book> reusult = new ArrayList<Book>();
+
+        try (Transaction tx = databaseService.beginTx()) {
+            ResourceIterator<Node> nodes = databaseService.findNodes(BOOK_LABEL);
+            while (nodes.hasNext()) {
+                Node node = (Node) nodes.next();
+                reusult.add(nodeToBook(node));
+            }
+            tx.success();
+        }
+        return reusult;
+
     }
 
+    private Book nodeToBook(Node node) {
+        Book book = new Book((String) node.getProperty("title"), (String) node.getProperty("isbn"));
+        book.setSubtitle((String) node.getProperty("sub"));
+        return book;
+    }
 }
