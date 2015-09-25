@@ -7,10 +7,8 @@ import java.util.UUID;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import org.bson.Document;
+import org.neo4j.graphdb.GraphDatabaseService;
 
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import com.prodyna.ted.library.entity.Book;
 import com.prodyna.ted.library.entity.Category;
 import com.prodyna.ted.library.entity.LibraryUser;
@@ -22,8 +20,8 @@ import com.prodyna.ted.library.entity.LibraryUser;
 @Stateless
 public class LibraryUserServiceBean implements LibraryUserService {
 	
-	@Inject
-	private MongoDatabase libraryDB;
+    @Inject
+    private GraphDatabaseService databaseService;
 
 	@Override
 	public void addUser(LibraryUser user) {

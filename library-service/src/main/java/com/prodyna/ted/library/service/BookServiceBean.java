@@ -1,19 +1,13 @@
 package com.prodyna.ted.library.service;
 
-import static com.mongodb.client.model.Filters.eq;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import org.bson.Document;
+import org.neo4j.graphdb.GraphDatabaseService;
 
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import com.prodyna.ted.library.entity.Book;
 import com.prodyna.ted.library.entity.Category;
 
@@ -25,7 +19,7 @@ import com.prodyna.ted.library.entity.Category;
 public class BookServiceBean implements BookService {
 	
 	@Inject
-	private MongoDatabase libraryDB;
+	private GraphDatabaseService databaseService;
 	
 	@Override
 	public void addBook(Book book) {
