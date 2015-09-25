@@ -99,6 +99,7 @@ public class LibraryUserServiceBean implements LibraryUserService {
 	@Override
 	public List<LibraryUser> findAll() {
 		// TODO your code comes here
+		return null;
 	}
 
 }
