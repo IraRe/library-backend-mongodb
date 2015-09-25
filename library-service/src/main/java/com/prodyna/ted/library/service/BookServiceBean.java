@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import org.bson.Document;
+import org.neo4j.graphdb.GraphDatabaseService;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -25,8 +26,8 @@ import com.prodyna.ted.library.entity.Category;
 public class BookServiceBean implements BookService {
 	
 	@Inject
-	private MongoDatabase libraryDB;
-	
+	private GraphDatabaseService databaseService;
+
 	@Override
 	public void addBook(Book book) {
 		// TODO your code comes here
