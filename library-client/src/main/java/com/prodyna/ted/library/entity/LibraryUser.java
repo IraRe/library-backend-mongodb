@@ -14,6 +14,8 @@ public class LibraryUser implements Serializable {
 
 	private static final long serialVersionUID = -740327000132986294L;
 	
+
+    private Long id;
 	private UUID libraryUserID;
 	private String username;
 	private String firstName;
@@ -32,7 +34,15 @@ public class LibraryUser implements Serializable {
 		this.lentBooks = new ArrayList<>();
 	}
 
-	public String getUsername() {
+	public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
 		return username;
 	}
 

@@ -8,6 +8,9 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import org.neo4j.graphdb.GraphDatabaseService;
+import org.neo4j.graphdb.Label;
+import org.neo4j.graphdb.Node;
+import org.neo4j.graphdb.Transaction;
 
 import com.prodyna.ted.library.entity.Book;
 import com.prodyna.ted.library.entity.Category;
@@ -24,9 +27,26 @@ public class LibraryUserServiceBean implements LibraryUserService {
     private GraphDatabaseService databaseService;
 
 	@Override
-	public void addUser(LibraryUser user) {
-		// TODO your code comes here
-		
+	public void addUser(final LibraryUser user) {
+
+	    Transaction transaction = databaseService.beginTx();
+	    
+	    Node userNode = databaseService.createNode();
+	    userNode.addLabel(new Label() {
+            @Override
+            public String name() {
+                return user.getFirstName() + " " + user.getLastName();
+            }
+        });
+	    
+	    userNode.setProperty("libraryUserID", user.getLibraryUserID());
+        userNode.setProperty("username", user.getUsername());
+        userNode.setProperty("firstName", user.getFirstName());
+        userNode.setProperty("lastName", user.getLastName());
+        userNode.setProperty("dateOfBirth", user.getDateOfBirth());
+        userNode.setProperty("telephoneNumber", user.getTelephoneNumber());
+        
+        transaction.success();
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import org.neo4j.graphdb.GraphDatabaseService;
+import org.neo4j.graphdb.Transaction;
 
 import com.prodyna.ted.library.entity.Book;
 import com.prodyna.ted.library.entity.Category;
@@ -23,19 +24,20 @@ public class BookServiceBean implements BookService {
 	
 	@Override
 	public void addBook(Book book) {
-		// TODO your code comes here
+	    Transaction transaction = databaseService.beginTx();
+	    
 	}
 
 	@Override
 	public void removeBook(String isbn) {
-		// TODO your code comes here
+	    
+	    Transaction transaction = databaseService.beginTx();
+	    databaseService.findNode("isbn", isbn, isbn);
 	}
 
 	@Override
 	public Book findBookByISBN(String isbn) {
 		Book book = null;
-		
-		// TODO your code comes here
 		
 		return book;
 	}

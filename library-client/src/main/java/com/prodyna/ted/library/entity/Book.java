@@ -12,6 +12,7 @@ public class Book implements Serializable {
 	
 	private static final long serialVersionUID = 8257147750897767747L;
 
+	private Long id;
 	private String title;
 	private String subtitle;
 	private List<String> authors;
@@ -26,6 +27,7 @@ public class Book implements Serializable {
 		this.categories = new ArrayList<>();
 	}
 	
+	
 	public String getTitle() {
 		return title;
 	}
@@ -34,7 +36,17 @@ public class Book implements Serializable {
 		this.title = title;
 	}
 	
-	public String getSubtitle() {
+	public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    public String getSubtitle() {
 		return subtitle;
 	}
 	

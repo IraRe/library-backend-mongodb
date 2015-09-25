@@ -17,7 +17,7 @@ import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 @Startup
 public class GraphDatabaseServiceProducer {
 	
-	private static final String TARGET_NEO4J_DB = "<path-to-your-neo4j-db>";
+	private static final String TARGET_NEO4J_DB = "D:/TED/TED9/Programms/neo4j-enterprise-2.2.5";
 	private static final GraphDatabaseService GRAPH_DATABASE_SERVICE = new GraphDatabaseFactory().newEmbeddedDatabase( TARGET_NEO4J_DB );
 	
 	@Produces
